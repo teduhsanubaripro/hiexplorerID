@@ -1,0 +1,447 @@
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: travel
+-- ------------------------------------------------------
+-- Server version	8.0.30
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `migrations` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `version` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `class` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `group` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `namespace` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `time` int NOT NULL,
+  `batch` int unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES (1,'2021-03-17-063227','App\\Database\\Migrations\\Gawe','default','App',1714646013,1),(2,'2021-05-01-092530','App\\Database\\Migrations\\CreateUsers','default','App',1714646013,1),(3,'2021-05-28-135657','App\\Database\\Migrations\\CreateGroups','default','App',1714646013,1),(4,'2021-09-08-090639','App\\Database\\Migrations\\Createcontacts','default','App',1714646013,1),(5,'2025-01-13-063906','App\\Database\\Migrations\\Hotels','default','App',1736750734,2),(6,'2025-01-13-131940','App\\Database\\Migrations\\RentCar','default','App',1736774715,3),(7,'2025-01-13-150752','App\\Database\\Migrations\\TblRooms','default','App',1736781006,4);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_aboutus`
+--
+
+DROP TABLE IF EXISTS `tbl_aboutus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_aboutus` (
+  `id_aboutus` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_aboutus`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_aboutus`
+--
+
+LOCK TABLES `tbl_aboutus` WRITE;
+/*!40000 ALTER TABLE `tbl_aboutus` DISABLE KEYS */;
+INSERT INTO `tbl_aboutus` VALUES (3,'Lorem','PT Afna Digital Indonesia is also known as AFNALINK. AFNALINK has embarked on a new journey\r\n to revolutionize the internet landscape in Indonesia by venturing into the realm of Internet\r\n Service Provision. Leveraging its expertise in technology and commitment to innovation,\r\n AFNALINK aims to redefine the standards of internet connectivity in the country.\r\n As an Internet Service Provider, Afna Digital Indonesia or AFNALINK prioritizes reliability, speed,\r\n and affordability. Understanding the critical role that internet connectivity plays in today\'s digital\r\n age, the company is dedicated to providing seamless and uninterrupted internet services to\r\n individuals, businesses, and communities across Indonesia.','2024-12-29 08:08:29','2024-12-29 16:03:33');
+/*!40000 ALTER TABLE `tbl_aboutus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_bookings`
+--
+
+DROP TABLE IF EXISTS `tbl_bookings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_bookings` (
+  `booking_id` int NOT NULL AUTO_INCREMENT,
+  `id_user` bigint NOT NULL,
+  `room_id` int NOT NULL,
+  `check_in_date` date NOT NULL,
+  `check_out_date` date NOT NULL,
+  `number_of_guests` int NOT NULL,
+  `status_booking` varchar(255) DEFAULT NULL,
+  `payment_method` varchar(255) DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `total_amount` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`booking_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_bookings`
+--
+
+LOCK TABLES `tbl_bookings` WRITE;
+/*!40000 ALTER TABLE `tbl_bookings` DISABLE KEYS */;
+INSERT INTO `tbl_bookings` VALUES (16,4,15,'2025-02-17','2025-02-18',4,'confirmed','transfer','awa','220517','2025-02-17 13:33:32','2025-02-24 01:46:21'),(17,4,15,'2025-02-17','2025-02-19',2,'pending',NULL,'awdaw','440664','2025-02-17 13:37:02','2025-02-17 13:37:02');
+/*!40000 ALTER TABLE `tbl_bookings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_hotels`
+--
+
+DROP TABLE IF EXISTS `tbl_hotels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_hotels` (
+  `hotel_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `address` text COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `rating` text COLLATE utf8mb4_general_ci,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `image_url` text COLLATE utf8mb4_general_ci,
+  `description` text COLLATE utf8mb4_general_ci,
+  `amenities` text COLLATE utf8mb4_general_ci,
+  PRIMARY KEY (`hotel_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_hotels`
+--
+
+LOCK TABLES `tbl_hotels` WRITE;
+/*!40000 ALTER TABLE `tbl_hotels` DISABLE KEYS */;
+INSERT INTO `tbl_hotels` VALUES (1,'Hotel Nusantara','Jalan Merdeka No. 1','0211234567','info@nusantarahotel.com','3.0','2025-01-13 13:47:37','2025-01-13 22:12:27',NULL,'eks ini diambil dari buku Latin kuno, tapi sudah diubah jadi tidak berarti apa-apa. Teks ini berasal dari karya literatur Latin karya Cicero yang berjudul \"De Finibus Bonorum et Malorum\" (Tentang Ujung-Ujung Kebaikan dan Kejahatan), yang ditulis pada 45 SM.',NULL),(2,'Hotel Bintang 5','Jalan Sudirman No. 99','0317654321','contact@bintang5hotel.com','5.0','2025-01-13 13:47:37','2025-01-13 20:15:38',NULL,'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.',NULL),(5,'Horizon','Pangandaran','082121093935','jos@gmail.com','3.5','2025-01-14 21:29:14','2025-01-14 21:29:14','951070939825.jpg','Untuk mengganti checkbox dengan ikon yang dapat dipilih, Anda bisa menggunakan elemen seperti div atau span untuk menampilkan ikon yang dapat diklik. Ketika pengguna mengklik ikon, Anda bisa menambah atau menghapus kelas pada elemen tersebut untuk menandakan status terpilih atau tidak.','fa fa-bed,fa fa-wifi,fa fa-swimmer,fa fa-utensils,fa fa-car,fa fa-tv'),(6,'Hotel Jaya Kurang Abadi','Pantai Barat Pangandaran','08125252525','aquarium@gmail.com','4.5','2025-01-29 09:50:39','2025-01-29 09:50:39','463677667044.jpg','Cocok','fa fa-bed,fa fa-wifi,fa fa-swimmer,fa fa-utensils,fa fa-car,fa fa-tv,fa fa-coffee,fa fa-concierge-bell,fa fa-shower,fa fa-hot-tub,fa fa-snowflake'),(7,'aaef','sefsefsef','33636374747','arif@awalud.in','4','2025-01-29 09:51:00','2025-01-29 09:51:00','994113063597.jpg','afawfawf','fa fa-swimmer,fa fa-concierge-bell'),(8,'awfagrsh','egsegs','34643747','arif@awalud.in','3','2025-01-29 09:51:29','2025-01-29 09:51:29','469422439225.png','agssgsgseg','fa fa-wifi,fa fa-spa');
+/*!40000 ALTER TABLE `tbl_hotels` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_invoice`
+--
+
+DROP TABLE IF EXISTS `tbl_invoice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_invoice` (
+  `invoice_id` varchar(255) NOT NULL,
+  `id_user` int NOT NULL,
+  `room_id` int NOT NULL,
+  `booking_id` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`invoice_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_invoice`
+--
+
+LOCK TABLES `tbl_invoice` WRITE;
+/*!40000 ALTER TABLE `tbl_invoice` DISABLE KEYS */;
+INSERT INTO `tbl_invoice` VALUES ('INV-25B053C18396',4,15,16,'2025-02-24 01:46:21','2025-02-24 01:46:21');
+/*!40000 ALTER TABLE `tbl_invoice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_kategori`
+--
+
+DROP TABLE IF EXISTS `tbl_kategori`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_kategori` (
+  `id_kategori` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `icon` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_kategori`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_kategori`
+--
+
+LOCK TABLES `tbl_kategori` WRITE;
+/*!40000 ALTER TABLE `tbl_kategori` DISABLE KEYS */;
+INSERT INTO `tbl_kategori` VALUES (1,'Internet Service Provider','Ini masih dalam pengembangan','fa fa-wifi','2024-12-29 06:23:46','2024-12-30 02:46:05'),(3,'Rack Collocation','Ini juga sebenernya','fa fa-table','2024-12-29 06:33:06','2024-12-30 02:45:54'),(4,'Server Collocation','Okeh','fa fa-server','2024-12-30 02:43:36','2024-12-30 02:43:36'),(5,'Dedicated Server','Okeh','fa fa-share-alt','2024-12-30 02:46:21','2024-12-30 02:49:39'),(6,'Web Hosting','Yoi aman','fa fa-cloud','2024-12-30 02:46:35','2024-12-30 02:46:35'),(7,'Application Development','Begitu','fa fa-laptop','2024-12-30 02:46:52','2024-12-30 02:47:05'),(8,'Cybersecurity Product and Services','Lagi lagi','fa fa-shield-alt','2024-12-30 02:47:21','2024-12-30 02:47:21');
+/*!40000 ALTER TABLE `tbl_kategori` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_key`
+--
+
+DROP TABLE IF EXISTS `tbl_key`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_key` (
+  `id_key` int NOT NULL AUTO_INCREMENT,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `icon` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_key`
+--
+
+LOCK TABLES `tbl_key` WRITE;
+/*!40000 ALTER TABLE `tbl_key` DISABLE KEYS */;
+INSERT INTO `tbl_key` VALUES (1,'','fa fa-','2024-12-29 22:48:22','2025-01-13 14:08:59'),(2,' Broad Coverage: Recognizing the importance of accessibility, AFNALINK is committed to expanding its network coverage to\r\n reach even the most remote areas of Indonesia. By bridging the digital divide, the company aims to empower all Indonesians\r\n with access to high-quality internet services.','fa fa-signal','2024-12-29 22:48:35','2024-12-29 23:14:47'),(3,'Cutting-Edge Technology: AFNALINK invests in the latest technologies and infrastructure to stay at the forefront of the\r\n industry. From fiber-optic networks to advanced routing and networking equipment, the company ensures that its customers\r\n benefit from the best-in-class internet solutions.','fa fa-cogs','2024-12-29 22:48:42','2024-12-29 23:15:22'),(4,'Customer-Centric Approach: Customer satisfaction is paramount for AFNALINK. The company provides personalized support\r\n and assistance to address customer inquiries, resolve issues promptly, and ensure a positive experience for all users.','fa fa-handshake','2024-12-29 22:48:51','2024-12-29 23:15:50'),(5,'Security and Privacy: AFNALINK prioritizes the security and privacy of its customers\' data. Robust cybersecurity measures are\r\n implemented to safeguard against online threats and protect customer information from unauthorized access or misuse.','fa fa-fa fa-shield-alt','2024-12-29 22:48:59','2024-12-29 23:16:31'),(7,'Sustainable Practices: AFNALINK is committed to operating in an environmentally sustainable manner. From energy-efficient\r\n infrastructure to eco-friendly practices, the company strives to minimize its environmental footprint and contribute to a\r\n greener future.\r\n','fa fa-seedling','2024-12-29 23:10:01','2024-12-29 23:10:01');
+/*!40000 ALTER TABLE `tbl_key` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_layanan_isp`
+--
+
+DROP TABLE IF EXISTS `tbl_layanan_isp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_layanan_isp` (
+  `id_layanan_isp` int NOT NULL AUTO_INCREMENT,
+  `id_ktg` int NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `speed` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `price` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `features` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_layanan_isp`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_layanan_isp`
+--
+
+LOCK TABLES `tbl_layanan_isp` WRITE;
+/*!40000 ALTER TABLE `tbl_layanan_isp` DISABLE KEYS */;
+INSERT INTO `tbl_layanan_isp` VALUES (12,1,'Paket Hemat','Internet Pilihan Anak Muda','18','200000','[\"Speed Up To 18 Mbps\",\"Kuota Tidak Terbatas\",\"Gratis IPTv\"]','2024-12-29 07:42:46','2024-12-30 01:38:14'),(13,1,'Paket Mantap','Pilihan Anak Muda','25','250000','[\"Speed Up To 25 Mbps\",\"Kuota Tidak Terbatas\",\"Gratis IPTv\"]','2024-12-30 01:42:12','2024-12-30 01:42:12'),(14,1,'Paket Puas','Internet Pilihan Anak Muda','50','520000','[\"Speed Up To 50 Mbps\",\"Kuota Tidak Terbatas\",\"Gratis IPTv\"]','2024-12-30 01:46:15','2024-12-30 01:46:15'),(15,3,'Rack Collocation','Colocation adalah tempat/rack untuk menempatkan atau meletakkan server dalam sebuah data center.',NULL,NULL,'[\"Keren\",\"kencang\",\"mantap\",\"bagus\",\"gak ada lawan\"]','2024-12-30 03:34:13','2024-12-30 04:02:42'),(16,4,'Server Collocation','Begitu',NULL,NULL,'[\"oke\",\"bang\",\"lagi\",\"apa\"]','2024-12-30 03:40:52','2024-12-30 03:40:52');
+/*!40000 ALTER TABLE `tbl_layanan_isp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_missions`
+--
+
+DROP TABLE IF EXISTS `tbl_missions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_missions` (
+  `id_missions` int NOT NULL AUTO_INCREMENT,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_missions`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_missions`
+--
+
+LOCK TABLES `tbl_missions` WRITE;
+/*!40000 ALTER TABLE `tbl_missions` DISABLE KEYS */;
+INSERT INTO `tbl_missions` VALUES (1,'Connectivity: Provide fast, reliable, and affordable internet connectivity solutions to meet the diverse needs of our customers, whether they are individuals, small businesses, or large enterprises.','2024-12-29 22:19:24','2024-12-29 22:25:12'),(2,'Innovation: Continuously invest in and adopt the latest technologies to enhance the quality and speed of our internet services, ensuring that our customers have access to\r\n state-of-the-art connectivity solutions.','2024-12-29 22:21:00','2024-12-29 22:21:00'),(3,'Customer Satisfaction: Prioritize customer satisfaction by offering responsive customer support, addressing concerns promptly, and continuously striving to exceed\r\n customer expectations.','2024-12-29 22:22:58','2024-12-29 22:22:58'),(4,'Accessibility: Expand our network coverage to reach underserved areas and bridge the digital divide, ensuring that all Indonesians have access to high-quality internet\r\n services','2024-12-29 22:23:32','2024-12-29 22:23:32'),(5,'Security: Implement robust cybersecurity measures to protect our customers\' data and privacy, safeguarding them from online threats and vulnerabilities.','2024-12-29 22:23:48','2024-12-29 22:23:48'),(6,' Sustainability: Operate our network infrastructure in an environmentally responsible manner, minimizing our carbon footprint and contributing to the sustainable\r\n development of Indonesia. By relentlessly pursuing our vision and mission, we aim to transform the digital landscape of Indonesia and empower individuals and businesses\r\n to thrive in the digital age','2024-12-29 22:23:55','2024-12-29 22:23:55');
+/*!40000 ALTER TABLE `tbl_missions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_profile`
+--
+
+DROP TABLE IF EXISTS `tbl_profile`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_profile` (
+  `id_profile` int NOT NULL AUTO_INCREMENT,
+  `company` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `tagline` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `phone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_profile`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_profile`
+--
+
+LOCK TABLES `tbl_profile` WRITE;
+/*!40000 ALTER TABLE `tbl_profile` DISABLE KEYS */;
+INSERT INTO `tbl_profile` VALUES (5,'AFNALINK','Solusi Internet Cepat','Mantaps','Dusun Ciokong RT.03 RW.01, Desa Sukaresik, Kec. Sidamulih, Kab. Pangandaran','0811236223','kontak@afna.link','2024-12-29 06:03:15','2024-12-30 04:32:05');
+/*!40000 ALTER TABLE `tbl_profile` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_rent_car`
+--
+
+DROP TABLE IF EXISTS `tbl_rent_car`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_rent_car` (
+  `rent_car_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `car_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `car_brand` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `car_model` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `license_plate` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `price_per_day` text COLLATE utf8mb4_general_ci NOT NULL,
+  `is_available` tinyint(1) NOT NULL DEFAULT '1',
+  `description` text COLLATE utf8mb4_general_ci,
+  `image_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`rent_car_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_rent_car`
+--
+
+LOCK TABLES `tbl_rent_car` WRITE;
+/*!40000 ALTER TABLE `tbl_rent_car` DISABLE KEYS */;
+INSERT INTO `tbl_rent_car` VALUES (10,'Toyota','Supra','4.0 GR','Z 1998 UE','500000',1,'Cocok untuk balapan liar!','885655935114.jpg','2025-01-13 22:03:41',NULL);
+/*!40000 ALTER TABLE `tbl_rent_car` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_rooms`
+--
+
+DROP TABLE IF EXISTS `tbl_rooms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_rooms` (
+  `room_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `hotel_id` int unsigned NOT NULL,
+  `room_type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `price_per_night` text COLLATE utf8mb4_general_ci NOT NULL,
+  `status` enum('Available','Booked','Out of Service') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Available',
+  `amenities` text COLLATE utf8mb4_general_ci,
+  `status_rooms` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `image_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  PRIMARY KEY (`room_id`),
+  KEY `tbl_rooms_hotel_id_foreign` (`hotel_id`),
+  CONSTRAINT `tbl_rooms_hotel_id_foreign` FOREIGN KEY (`hotel_id`) REFERENCES `tbl_hotels` (`hotel_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_rooms`
+--
+
+LOCK TABLES `tbl_rooms` WRITE;
+/*!40000 ALTER TABLE `tbl_rooms` DISABLE KEYS */;
+INSERT INTO `tbl_rooms` VALUES (12,2,'awaw22','2252','Available','fa fa-utensils,fa fa-car,fa fa-spa,fa fa-concierge-bell,fa fa-paw,fa fa-shower',NULL,'2025-01-13 23:25:17','2025-01-13 23:26:01','1736786784_d14c6a5c0602c1e82956.jpg','awfawfawf12'),(13,2,'waawfawf','2424','Available','fa fa-wifi,fa fa-restaurant,fa fa-spa',NULL,'2025-01-13 23:38:25',NULL,'732078758466.png','aawdaw'),(15,6,'Deluxe','200000','Booked','fa fa-bed,fa fa-coffee',NULL,'2025-01-29 11:18:38',NULL,'163754416863.jpg','OKe bange bang pookonya'),(16,6,'awawfawfawfawf','2000000','Available','fa fa-bed,fa fa-wifi,fa fa-coffee,fa fa-cutlery',NULL,'2025-01-29 12:25:46',NULL,'824167911669.png','awawfawfawfawf'),(17,6,'oakwanwgiawgawgg','100000','Available','fa fa-swimmer,fa fa-car',NULL,'2025-01-29 12:26:08',NULL,'656433575322.jpg','Bro'),(18,6,'awfawfawfawf','300000','Available','fa fa-bed,fa fa-coffee',NULL,'2025-01-29 12:26:34',NULL,'617848083215.jpg','awfawfawawf');
+/*!40000 ALTER TABLE `tbl_rooms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_vision`
+--
+
+DROP TABLE IF EXISTS `tbl_vision`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_vision` (
+  `id_vision` int NOT NULL AUTO_INCREMENT,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_vision`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_vision`
+--
+
+LOCK TABLES `tbl_vision` WRITE;
+/*!40000 ALTER TABLE `tbl_vision` DISABLE KEYS */;
+INSERT INTO `tbl_vision` VALUES (1,'To become the leading Internet Service Provider (ISP) in Indonesia,\r\n providing reliable and high-speed connectivity to empower\r\n individuals and businesses in their digital endeavors.','2024-12-29 22:03:38','2024-12-29 22:05:25');
+/*!40000 ALTER TABLE `tbl_vision` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id_user` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name_user` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email_user` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password_user` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `info_user` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `role` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Administrator','afna@link','$2y$12$7ZDrobaAnof747eCLOfgyOnewViySmFEjEf8kb6IVCo1A5gc.IGkS',NULL,'Superadmin'),(4,'Teduh Sanubari','teduh@gmail.com','$2y$12$7ZDrobaAnof747eCLOfgyOnewViySmFEjEf8kb6IVCo1A5gc.IGkS',NULL,'User');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'travel'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-02-24  9:02:37
